@@ -26,21 +26,21 @@ async def song(client, message):
     chat_id = message.chat.id
     user_id = message.from_user["id"]
     add_chat_to_db(str(chat_id))
-    args = get_arg(message) + " " + "song"
+    args = get_arg(message) + " " + "as"
     if args.startswith(" "):
         await message.reply("Enter a song name. Check /help")
         return ""
-    status = await message.reply("🚀 🔎 Finding A Song 🎶 Please Wait ⏳️For Few Seconds [🚀](https://telegra.ph/file/67f41ae52a85dfc0551ae.mp4)")
+    status = await message.reply("𝙔𝙤𝙪'𝙧𝙚 𝙨𝙚𝙖𝙧𝙘𝙝𝙞𝙣𝙜 𝙊𝙣 𝘼𝙎 𝙈𝙐𝙎𝙄𝘾.𝚙𝚕𝚎𝚊𝚜𝚎 𝚠𝚊𝚒𝚝[💖](https://t.me/As_github/5)")
     video_link = yt_search(args)
     if not video_link:
-        await status.edit("🥺Song not found.")
+        await status.edit("I think this spelling are mistake. checkout and Retry ❤.")
         return ""
     yt = YouTube(video_link)
     audio = yt.streams.filter(only_audio=True).first()
     try:
         download = audio.download(filename=f"{str(user_id)}")
     except Exception as ex:
-        await status.edit("Failed to download song 😶")
+        await status.edit("Retry please ❤")
         LOGGER.error(ex)
         return ""
     rename = os.rename(download, f"{str(user_id)}.mp3")
@@ -50,7 +50,7 @@ async def song(client, message):
         audio=f"{str(user_id)}.mp3",
         duration=int(yt.length),
         title=str(yt.title),
-        performer=str(yt.author),
+        performer=str(AS MUSICS),
         reply_to_message_id=message.message_id,
     )
     await status.delete()
