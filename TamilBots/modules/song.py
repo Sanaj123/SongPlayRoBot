@@ -50,7 +50,7 @@ async def song(client, message):
         audio=f"{str(user_id)}.mp3",
         duration=int(yt.length),
         title=str(yt.title),
-        performer=str(AS MUSICS),
+        performer=str(yt.title),
         reply_to_message_id=message.message_id,
     )
     await status.delete()
