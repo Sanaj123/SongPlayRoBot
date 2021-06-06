@@ -10,7 +10,7 @@ from TamilBots import app, LOGGER
 from TamilBots.sql.chat_sql import add_chat_to_db
 
 
-def yt_search(as):
+def yt_search(song):
     videosSearch = VideosSearch(as, limit=1)
     result = videosSearch.result()
     if not result:
