@@ -28,19 +28,19 @@ async def song(client, message):
     add_chat_to_db(str(chat_id))
     args = get_arg(message) + " " + "as"
     if args.startswith(" "):
-        await message.reply("Enter a song name. Check /help")
+        await message.reply("പാട്ടിന്റെ പേര് എനിക്ക് വ്യക്തമല്ല 😅. Check /help")
         return ""
-    status = await message.reply("𝙔𝙤𝙪'𝙧𝙚 𝙨𝙚𝙖𝙧𝙘𝙝𝙞𝙣𝙜 𝙊𝙣 𝘼𝙎 𝙈𝙐𝙎𝙄𝘾.𝚙𝚕𝚎𝚊𝚜𝚎 𝚠𝚊𝚒𝚝[💖](https://t.me/As_github/5)")
+    status = await message.reply("പാട്ട് ഞാൻ തിരയുന്നു.....🔎 ഇപ്പോൾ വരും കേട്ടോ.......🥰[💘](https://t.me/c/1288468141/3)")
     video_link = yt_search(args)
     if not video_link:
-        await status.edit("I think this spelling are mistake. checkout and Retry ❤.")
+        await status.edit("എനിക്ക് തോന്നുന്നു താങ്കൾക്കു അക്ഷരം തെറ്റിയെന്ന്.വീണ്ടും ശ്രമിക്കു....❤.")
         return ""
     yt = YouTube(video_link)
     audio = yt.streams.filter(only_audio=True).first()
     try:
         download = audio.download(filename=f"{str(user_id)}")
     except Exception as ex:
-        await status.edit("Retry please ❤")
+        await status.edit("അവിടെയോ... എനിക്ക് തകരാർ സംഭവിച്ചു 😅. വീണ്ടും ശ്രമിക്കു...❤")
         LOGGER.error(ex)
         return ""
     rename = os.rename(download, f"{str(user_id)}.mp3")
